@@ -27,14 +27,14 @@ func (a *Animal) Init(eat, move, speak string) {
     a.speak = speak
 }
 
-func (a *Animal) Eat() string {
-    return a.eat
+func (a *Animal) Eat() {
+    fmt.Println(a.eat)
 }
-func (a *Animal) Move() string {
-    return a.move
+func (a *Animal) Move() {
+    fmt.Println(a.move)
 }
-func (a *Animal) Speak() string {
-    return a.speak
+func (a *Animal) Speak() {
+    fmt.Println(a.speak)
 }
 
 func main() {
@@ -66,11 +66,11 @@ func main() {
         }
 
         if command == "eat" {
-            fmt.Println(this.Eat())
+            this.Eat()
         } else if command == "move" {
-            fmt.Println(this.Move())
+            this.Move()
         } else if command == "speak" {
-            fmt.Println(this.Speak())
+            this.Speak()
         } else {
             fmt.Println("The second string is the name of the information requested about the animal, either “eat”, “move”, or “speak”")
             continue
