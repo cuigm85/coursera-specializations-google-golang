@@ -1,0 +1,18 @@
+Moore’s law:
+- Predicted that transistor density would double every 2 years.
+- Not a physical law, just an observation.
+- Smaller transistors switch faster.
+- Exponential increase in density would lead to exponential increase in speed.
+
+The speedup that we get from Moore's Law can't continue because transistors consume power and power is becoming a critical issue - Power Wall
+- As you increase number of transistors, power used also increases (smaller transistors use less power but transistor density scaling is much faster).
+- High power leads to high temperature, but air cooling (fans) has limitation to remove the heat.
+
+Dennard Scaling
+- Voltage should scale with transistor size that keeps power consumption, and temperature, low.
+- But Voltage can’t go too low, it limited by threshold voltage. 
+- There are also noise problems limit voltage scaling.
+- We should consider leakage power, it's limits the voltage scaling.
+
+Cannot increase frequency without limit.
+- P = α * CFV^2, frequency still goes up but with slow rate.
