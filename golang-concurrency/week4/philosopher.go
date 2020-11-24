@@ -15,7 +15,6 @@ type Philo struct {
 }
 
 func (p *Philo) eat(wg *sync.WaitGroup) {
-	<-*p.host
 	for {
 		if p.times == 3 {
 			fmt.Printf("finishing eating %d\n", p.id)
@@ -23,6 +22,7 @@ func (p *Philo) eat(wg *sync.WaitGroup) {
 			return
 		}
 
+		<-*p.host
 		p.leftCS.Lock()
 		p.rightCS.Lock()
 
@@ -31,6 +31,7 @@ func (p *Philo) eat(wg *sync.WaitGroup) {
 
 		p.rightCS.Unlock()
 		p.leftCS.Unlock()
+		*p.host <- 1
 	}
 }
 
@@ -53,8 +54,11 @@ func main() {
 	}
 
 	// buffer size of 2 make sure that no more than 2 philosophers to eat concurrently.
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 2; i++ {
 		host <- 1
 	}
 	wg.Wait()
+	for i := 0; i < 2; i++ {
+		<-host
+	}
 }
