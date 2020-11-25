@@ -26,11 +26,11 @@ func (p *Philo) eat(wg *sync.WaitGroup) {
 		p.rightCS.Lock()
 
 		p.times += 1
-		fmt.Printf("philosopher %d start eating the %d times\n", p.id, p.times)
+		fmt.Printf("philosopher %d start eating %d time(s)\n", p.id, p.times)
 
 		p.rightCS.Unlock()
 		p.leftCS.Unlock()
-		fmt.Printf("philosopher %d finishing eating the %d times\n", p.id, p.times)
+		fmt.Printf("philosopher %d finishing eating %d time(s)\n", p.id, p.times)
 		*p.host <- 1
 	}
 }
