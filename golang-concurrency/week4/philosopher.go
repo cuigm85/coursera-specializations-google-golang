@@ -17,7 +17,6 @@ type Philo struct {
 func (p *Philo) eat(wg *sync.WaitGroup) {
 	for {
 		if p.times == 3 {
-			fmt.Printf("finishing eating %d\n", p.id)
 			wg.Done()
 			return
 		}
@@ -27,10 +26,11 @@ func (p *Philo) eat(wg *sync.WaitGroup) {
 		p.rightCS.Lock()
 
 		p.times += 1
-		fmt.Printf("start eating philosopher %d the %d times\n", p.id, p.times)
+		fmt.Printf("philosopher %d start eating the %d times\n", p.id, p.times)
 
 		p.rightCS.Unlock()
 		p.leftCS.Unlock()
+		fmt.Printf("philosopher %d finishing eating the %d times\n", p.id, p.times)
 		*p.host <- 1
 	}
 }
